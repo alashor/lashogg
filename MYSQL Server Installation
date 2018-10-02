@@ -1,0 +1,54 @@
+STEP BY STEP INSTALLATION PROCESS TO INSTALL MYSQL ON UBUNTU
+
+ --- pwd 
+This is to verify the current directory i am working on
+
+--- ls
+This is to list the directories on my machine.
+
+--- ls -l 
+This is to list all the directories and also to let me know the permissions i have on each directory
+
+---wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+This is to download the link copied to the current directory.
+
+---ls
+This is to verify that the file (dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb)
+downloaded successfully.
+
+
+---sudo dpkg -i mysql-apt-config* 
+Note: it prompted me to enter sudo passwword  
+This is to install the .deb packed that was downloaded.
+note -i ---- this is to indicate that i wanted to install from the specified file.
+
+Note: A configuration message will pop up asking to specify the version of MYSQL You would prefer,
+Since the defaults will add repositories for the latest version of MYSQL, 
+I just scrolled to the bottom of the page with the down arrow key to select OK and enter.
+
+--- sudo apt update
+This is to to refresh the newly installed package.
+Note: it prompted me to enter sudo passwword 
+Running the above command returned message : 152 packages can be upgraded.
+
+--- sudo apt install mysql-server
+I used the above command to install mysqlserver
+apt looked for the mysqlserver package and i clicked Y and Enter to continue.
+I set a root password with strong characters.
+A message popped up in a dialogue box asking to select a default authentication plugin, then i selected Use Strong Password Encryption.
+
+---sudo systemctl status mysql
+I used the above command to confirm and verify that mysql installed successfully and it is up and running.
+After running the above command --- Active : active message returned to verify that mysql is up and running OK. 
+
+-- mysql_secure_installation
+Used the above command to secure the mysql installation.
+
+This command will ask for the new root password which was set during the installation.
+I clicked enter to skip the validate password plugin.
+I then chose Y and enter to remove anonymous user, disallow remote login, remove testdatabse, reload priviledge tables.
+
+---mysqladmin -u -root -p version
+Used the above administrative command to connect to the server to retrieve status information and also to check the version of the mysql server that was installed.
+
+
